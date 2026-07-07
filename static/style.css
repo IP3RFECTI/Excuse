@@ -1,0 +1,333 @@
+/*
+═══════════════════════════════════════════════════════════════════
+📁 ФАЙЛ: static/style.css
+📝 ОПИСАНИЕ: Стили для "Генератора отмазок"
+═══════════════════════════════════════════════════════════════════
+
+✅ Тёмная тема (градиент #1a1a2e → #16213e)
+✅ Анимация fadeIn для результата
+✅ Анимация slide-in для уведомления "ОТПРАВЛЕНО!"
+✅ Спиннер загрузки
+✅ Адаптив под мобильные устройства
+
+═══════════════════════════════════════════════════════════════════
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    color: #4CAF50;
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    text-align: center;
+    color: #888;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+}
+
+.generator-section {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #b0b0b0;
+    font-weight: 500;
+}
+
+select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #e0e0e0;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+select:focus, textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.result-section {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.result-card {
+    background: rgba(76, 175, 80, 0.1);
+    border: 2px solid rgba(76, 175, 80, 0.3);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.result-header h3 {
+    color: #4CAF50;
+    font-size: 1.5em;
+}
+
+.rating-badge {
+    background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+.excuse-text {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+}
+
+.result-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.result-actions button {
+    flex: 1;
+}
+
+.history-section {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.history-section h3 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.history-item {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.history-item:hover {
+    background: rgba(0, 0, 0, 0.4);
+    transform: translateX(5px);
+}
+
+.history-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.history-item-situation {
+    color: #4CAF50;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.history-item-rating {
+    background: rgba(255, 152, 0, 0.2);
+    color: #FF9800;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.history-item-text {
+    color: #b0b0b0;
+    line-height: 1.5;
+}
+
+.empty-history {
+    text-align: center;
+    color: #888;
+    padding: 40px;
+    font-style: italic;
+}
+
+.notification {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 12px;
+    font-size: 1.3em;
+    font-weight: bold;
+    box-shadow: 0 8px 32px rgba(76, 175, 80, 0.4);
+    transition: top 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1000;
+}
+
+.notification.show {
+    top: 30px;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+.loading-overlay p {
+    color: white;
+    font-size: 1.3em;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .result-actions {
+        flex-direction: column;
+    }
+}

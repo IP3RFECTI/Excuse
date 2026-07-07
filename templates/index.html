@@ -1,0 +1,87 @@
+<!--
+═══════════════════════════════════════════════════════════════════
+📁 ФАЙЛ: templates/index.html
+📝 ОПИСАНИЕ: HTML шаблон главной страницы "Генератор отмазок"
+═══════════════════════════════════════════════════════════════════
+
+✅ Выбор ситуации из списка + поле "Другое"
+✅ Отображение отмазки с рейтингом правдоподобности
+✅ Кнопка "Скопировать и отправить боссу"
+✅ Кнопка "Перегенерировать"
+✅ История последних 10 отмазок
+✅ Анимация "ОТПРАВЛЕНО!"
+✅ Анимация загрузки (спиннер)
+
+═══════════════════════════════════════════════════════════════════
+-->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор отмазок</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎭 Генератор отмазок</h1>
+        <p class="subtitle">Максимально убедительные и креативные отмазки для любой ситуации</p>
+
+        <div class="generator-section">
+            <div class="form-group">
+                <label for="situation">Выберите ситуацию:</label>
+                <select id="situation" onchange="handleSituationChange()">
+                    <option value="">Загрузка...</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="custom-text-group" style="display: none;">
+                <label for="custom-text">Опишите свою ситуацию:</label>
+                <textarea id="custom-text" placeholder="Например: Забыл купить хлеб..."></textarea>
+            </div>
+
+            <button id="generate-btn" onclick="generateExcuse()" class="btn-primary">
+                🎲 Сгенерировать отмазку
+            </button>
+        </div>
+
+        <div id="result-section" class="result-section" style="display: none;">
+            <div class="result-card">
+                <div class="result-header">
+                    <h3>🎯 Ваша отмазка:</h3>
+                    <div class="rating-badge" id="rating-badge">
+                        <span id="rating-value">0</span>%
+                    </div>
+                </div>
+                <p id="excuse-text" class="excuse-text"></p>
+                <div class="result-actions">
+                    <button onclick="copyExcuse()" class="btn-secondary" id="copy-btn">
+                        📋 Скопировать и отправить боссу
+                    </button>
+                    <button onclick="generateExcuse()" class="btn-secondary">
+                        🔄 Перегенерировать
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="history-section" class="history-section">
+            <h3>📜 История отмазок</h3>
+            <div id="history-list" class="history-list">
+                <p class="empty-history">История пуста. Сгенерируйте первую отмазку!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification">
+        ✅ ОТПРАВЛЕНО!
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Генерирую отмазку...</p>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
